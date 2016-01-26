@@ -8,9 +8,9 @@ public class Statics
 
     public static Communication.NetworkType netType = Communication.NetworkType.TCP;
 
-    public static string ServerIpAddress = "192.168.1.101";
+    public static string ServerIpAddress = "192.168.1.105";
 
-    public static int ServerPort = 8992;
+    public static int ServerPort = 8088;
 
     public static string SendObjectType = "Myproto.MsgRequest";
 

@@ -10,6 +10,7 @@ public class EventCollection
 
     public static void OnEventTrigger(UserEvent e)
     {
+		Debug.Log ("Add event: type: " + e.type);
         EventBag.GetInstance().Add(e);
     }
 

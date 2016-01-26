@@ -44,8 +44,10 @@ public class PredefinedHandler : EventHandler
             case UserEvent.EventType.GA:
                 {
 					var proto = e.rawContent as GA;
-					GOCollection.AddGameObject(proto.GOID,proto.AssetName);
-
+					//GOCollection.AddGameObject(proto.GOID,proto.AssetName);
+					var go = GameObject.Find("Cube");		
+					World.GetInstance().AddGameObject(proto.GOID,go);
+					go.SetActive(true);
                     break;
                 }
             case UserEvent.EventType.GR:

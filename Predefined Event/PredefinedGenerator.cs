@@ -61,7 +61,6 @@ public class PredefinedGenerator : EventGenerator {
     public override void GenerateEvent(object boxed)
     {
 		if (!(boxed is UserEvent)) {
-			Test();
 			return;
 		}
 		var e = boxed as UserEvent;
