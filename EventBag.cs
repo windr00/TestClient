@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using UnityEngine;
 
 public class EventBag
 {
     private List<UserEvent> eventList = new List<UserEvent>();
 
     private static EventBag _instance = null;
+
+	public static ManualResetEvent nextTurnWait = new ManualResetEvent (false);
 
     public void Add(UserEvent e)
     {
@@ -38,5 +42,6 @@ public class EventBag
 
     private EventBag()
     {
+		nextTurnWait.Reset ();
     }
 }

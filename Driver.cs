@@ -13,13 +13,15 @@ using PredefinedProto;
 
 public class Driver : MonoBehaviour {
 
+	private bool ifTested = false;
+
     void Awake()
     {
         DataOperator.GetInstance().AddCommandListener(ReceiveCommand);
+		Loom.Init ();
     }
 
 	void Start() {
-		Test ();
 	}
 
 
@@ -37,11 +39,19 @@ public class Driver : MonoBehaviour {
 
     private void ReceiveCommand(List<MsgResponse> command)
     {
-        EventDispatch.DispatchEvent(command);
+		Loom.QueueOnMainThread (() => {
+			EventDispatch.DispatchEvent(command);
+		});
+        
     }
 
 	void FixedUpdate () 
-    {
+	{
 		DataOperator.GetInstance ().SendMessage ();
+		
+		if (!ifTested) {
+			Test ();
+			ifTested = true;
+		}
 	}
 }

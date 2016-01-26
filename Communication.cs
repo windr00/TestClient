@@ -134,6 +134,7 @@ public class Communication
 
     private void DataReceivedCallback(object data)
     {
+		Debug.Log ("DataReceived");
         if (OnDataReceived != null)
         {
             OnDataReceived(data);
