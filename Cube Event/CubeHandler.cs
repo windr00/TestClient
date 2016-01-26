@@ -10,22 +10,22 @@ public class CubeHandler : EventHandler {
 		var rbody = gameObject.GetComponent<Rigidbody>();
 		foreach (var key in ce.key) {
 			switch(key) {
-			case KeyCode.W:
+			case "W":
 			{
 				rbody.AddForce(transform.forward * 1.0f);
 				break;
 			}
-			case KeyCode.S:
+			case "S":
 			{
 				rbody.AddForce(transform.forward * -1.0f);
 				break;
 			}
-			case KeyCode.A:
+			case "A":
 			{
 				rbody.AddForce(transform.right * -1.0f);
 				break;
 			}
-			case KeyCode.D:
+			case "D":
 			{
 				rbody.AddForce(transform.right * 1.0f);
 				break;
