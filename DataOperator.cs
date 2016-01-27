@@ -56,7 +56,9 @@ public class DataOperator {
 
     private void comInstance_OnDataReceived(object bytes)
     {
-        var data = Serialize.Deserailizer<MsgResponse>(bytes as byte[], Statics.DeserializeMethod);
+		var data = Serialize.Deserailizer<MsgResponse>(bytes as byte[], Statics.DeserializeMethod);
+		Debug.Log ("DataReceived");
+		comInstance.Read ();
         if (OnCommandReceived != null)
         {
             OnCommandReceived(data);
@@ -82,7 +84,7 @@ public class DataOperator {
 			var content = new Content();
 			var msg = new Msg();
 			head.srcID = e.sponsorId;
-			head.srcType = SRCType.SIM;
+			head.srcType = SRCType.UNITYC;
 			head.dstIDs.InsertRange(0,e.targetIdList);
 			msg.type = Support.MsgTypeConverter(e.type);
 			msg.body = World.GetInstance().GetGameObject(e.sponsorId).GetComponent<EventGenerator>().SelfSerialize(e.type,e.rawContent);
@@ -97,10 +99,10 @@ public class DataOperator {
     public void SendMessage()
     {
         var req = FormRequest();
-		Debug.Log ("formed request count: " + req.Count);
+//		Debug.Log ("formed request count: " + req.Count);
 		foreach (var i in req) {
 			var data = Serialize.Serailizer<MsgRequest> (i, Statics.SerializeMethod);
-			Debug.Log("Sending " + BitConverter.ToString(data));
+//			Debug.Log("Sending " + BitConverter.ToString(data));
 			comInstance.Send (data);
 			waitSend.WaitOne();
 		}

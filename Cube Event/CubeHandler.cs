@@ -2,6 +2,7 @@
 using System.Collections;
 using ProtoBuf;
 using CubeEvent;
+using System.IO;
 
 public class CubeHandler : EventHandler {
 
@@ -85,6 +86,24 @@ public class CubeHandler : EventHandler {
 
 	public override object SelfDeserialize (UserEvent.EventType type, byte[] body)
 	{
-		throw new System.NotImplementedException ();
+		object ret = null;
+
+		using (var stream = new MemoryStream(body)) {
+			switch (type) {
+			case UserEvent.EventType.CTR:
+				{
+				ret = Serializer.Deserialize<CubeCE>(stream);
+					break;
+				}
+			case UserEvent.EventType.ST:
+			{
+				ret = Serializer.Deserialize<CubeSTE>(stream);
+				break;
+			}
+
+			}
+
+		}
+		return ret;
 	}
 }

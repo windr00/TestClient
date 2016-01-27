@@ -9,7 +9,7 @@ public class EventReporter {
 		var ret = new List<UserEvent> ();
 		ret.AddRange(EventBag.GetInstance().GetAll());
 		EventBag.GetInstance ().RemoveAll ();
-		Debug.Log ("report event count: " + ret.Count);
+	//	Debug.Log ("report event count: " + ret.Count);
 		EventBag.nextTurnWait.Set ();
 		return ret;
     }

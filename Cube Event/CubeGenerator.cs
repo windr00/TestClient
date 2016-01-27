@@ -28,7 +28,7 @@ public class CubeGenerator : EventGenerator {
 		if (ce.key.Count == 0) {
 			return ;
 		}
-		Debug.Log ("Get key");
+//		Debug.Log ("Get key");
 		base.BroadCastEvent (e);
 	}
 

@@ -46,7 +46,7 @@ public class PredefinedHandler : EventHandler
 					var proto = e.rawContent as GA;
 					//GOCollection.AddGameObject(proto.GOID,proto.AssetName);
 				var go = GameObject.Instantiate(Resources.Load("Cube"))as GameObject;
-			Debug.Log("proto: " + proto.GOID + " " + (go == null));
+//			Debug.Log("proto: " + proto.GOID + " " + (go == null));
 			go.GetComponent<EventGenerator>().gameObjectId = proto.GOID;
 			go.GetComponent<EventGenerator>().AddListener(EventCollection.OnEventTrigger);
 					World.GetInstance().AddGameObject(proto.GOID,go);
