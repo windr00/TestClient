@@ -29,6 +29,7 @@ public class CubeGenerator : EventGenerator {
 			return ;
 		}
 //		Debug.Log ("Get key");
+		e.rawContent = ce as object;
 		base.BroadCastEvent (e);
 	}
 
